@@ -2,9 +2,12 @@ package pl.sda.hello.world.filters;
 
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+@WebFilter(filterName = "MyFilter",
+        servletNames = {"HelloServlet"})
 public class MyFilter implements Filter {
     @Override
     public void doFilter(
@@ -15,7 +18,7 @@ public class MyFilter implements Filter {
         PrintWriter writer = servletResponse.getWriter();
         writer.write("<html><body><div id=\"servletResponse\" style='text-align: center;' ");
         String login = servletRequest.getParameter("login");
-        if (login.equals("admin")) {
+        if (login != null && login.equals("admin")) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             writer.print(

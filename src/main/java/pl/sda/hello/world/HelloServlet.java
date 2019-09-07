@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 
 
 @WebServlet(name = "HelloServlet",
-        urlPatterns = {"/hello", "/Hello", "/qwer"},
+        urlPatterns = {"/hello", "/Hello", "/qwer", "/"},
         initParams = {
                 @WebInitParam(name = "userId", value = "123456"),
                 @WebInitParam(name = "localization", value = "Poland")
